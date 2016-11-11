@@ -2,6 +2,7 @@ class CreateC80SwiperSframes < ActiveRecord::Migration
   def change
     create_table :c80_swiper_sframes, :options => 'COLLATE=utf8_unicode_ci' do |t|
       t.string :title
+      t.string :link_url
       t.string :image
       t.integer :ord
       t.boolean :enabled, default: true

@@ -11,6 +11,7 @@ ActiveAdmin.register C80Swiper::Swslider, as: 'Swslider' do
                     :id,
                     :_destroy,
                     :title,
+                    :link_url,
                     :image,
                     :swslider_id,
                     :ord,
@@ -54,6 +55,7 @@ ActiveAdmin.register C80Swiper::Swslider, as: 'Swslider' do
       f.inputs 'Фреймы' do
         f.has_many :sframes, allow_destroy: true do |ff|
           ff.input :title
+          ff.input :link_url
           ff.input :enabled,
                    :input_html => {
                        :checked => ff.object.new_record? ? 'checked':nil
