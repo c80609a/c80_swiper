@@ -17,7 +17,16 @@
               <div class="swiper-lazy-preloader"></div>
             </div>
           <% else %>
-            <div class="swiper-slide frame_index_<%= index %>" style="background-image:url(<%= frame.image.thumb_lg %>)"></div>
+            <div class="swiper-slide frame_index_<%= index %>" style="background-image:url(<%= frame.image.thumb_lg %>)">
+
+              <h3><%= frame.title %></h3>
+              <% frame.fcaptions.each_with_index do |fcaption, index2| %>
+              <div class="fcaption fcaption_index_<%= index2 %>">
+                <%= fcaption.value.html_safe %>
+              </div>
+              <% end %>
+
+            </div>
           <% end %>
 
     <% end %>
