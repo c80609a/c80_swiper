@@ -10,11 +10,17 @@ module C80Swiper
 
     mount_uploader :image, SframeUploader
 
+    validates_presence_of :image
+
     scope :def_order, -> { order(:ord => :asc) }
 
     # def csphoto_img
     #   self.csphoto.present? ? MiniMagick::Image.open(self.csphoto.path):nil
     # [img["width"],img["height"]]
+    # end
+
+    # def image_url
+      # http://lorempixel.com/600/600/nature/1
     # end
 
   end
