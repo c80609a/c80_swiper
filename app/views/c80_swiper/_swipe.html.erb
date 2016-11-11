@@ -13,20 +13,24 @@
 
   </div>
 
-  <% if options[:mark_pagination] %>
+  <% if options[:mark_pagination].present? %>
     <!-- If we need pagination -->
     <div class="swiper-pagination"></div>
   <% end %>
 
-  <% if options[:mark_buttons] %>
+  <% if options[:mark_buttons].present? %>
     <!-- If we need navigation buttons -->
     <div class="swiper-button-prev"></div>
     <div class="swiper-button-next"></div>
   <% end %>
 
-  <% if options[:mark_scrollbar] %>
+  <% if options[:mark_scrollbar].present? %>
     <!-- If we need scrollbar -->
     <div class="swiper-scrollbar"></div>
   <% end %>
 
 </div>
+
+<script>
+  create_swiper(<%= options.to_json.html_safe %>);
+</script>
