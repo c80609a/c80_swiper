@@ -54,7 +54,10 @@ ActiveAdmin.register C80Swiper::Swslider, as: 'Swslider' do
       f.inputs 'Фреймы' do
         f.has_many :sframes, allow_destroy: true do |ff|
           ff.input :title
-          ff.input :enabled
+          ff.input :enabled,
+                   :input_html => {
+                       :checked => ff.object.new_record? ? 'checked':nil
+                   }
           ff.input :image,
                   :as => :file,
                   :hint => image_tag(ff.object.image.thumb_md)
