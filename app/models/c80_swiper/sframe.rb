@@ -1,7 +1,13 @@
 module C80Swiper
   class Sframe < ActiveRecord::Base
     belongs_to :swslider
-    # has_many :fcaptions, :dependent => :destroy
+    has_many :fcaptions, :dependent => :destroy
+    accepts_nested_attributes_for :fcaptions,
+                                  :reject_if => lambda { |attributes|
+                                    !attributes.present?
+                                  },
+                                  :allow_destroy => true
+
     mount_uploader :image, SframeUploader
 
     scope :def_order, -> { order(:ord => :asc) }
