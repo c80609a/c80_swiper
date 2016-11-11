@@ -1,0 +1,32 @@
+<!-- Slider main container -->
+<div class="swiper-container">
+
+  <!-- Additional required wrapper -->
+  <div class="swiper-wrapper">
+
+    <!-- Slides -->
+    <% frames.each_with_index do |frame, index| %>
+        <div class="swiper-slide frame_index_<%= index %>">
+          Slide #<%= index %>
+        </div>
+    <% end %>
+
+  </div>
+
+  <% if options[:mark_pagination] %>
+    <!-- If we need pagination -->
+    <div class="swiper-pagination"></div>
+  <% end %>
+
+  <% if options[:mark_buttons] %>
+    <!-- If we need navigation buttons -->
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+  <% end %>
+
+  <% if options[:mark_scrollbar] %>
+    <!-- If we need scrollbar -->
+    <div class="swiper-scrollbar"></div>
+  <% end %>
+
+</div>
