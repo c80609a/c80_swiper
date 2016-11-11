@@ -6,9 +6,20 @@
 
     <!-- Slides -->
     <% frames.each_with_index do |frame, index| %>
-        <div class="swiper-slide frame_index_<%= index %>">
-          Slide #<%= index %>
-        </div>
+
+          <!--Slide #<%= index %>-->
+
+          <% if options[:mark_lazy].present? %>
+            <div class="swiper-slide frame_index_<%= index %>">
+              <!-- Required swiper-lazy class and image source specified in data-src attribute -->
+              <img data-src="<%= frame.image.thumb_lg %>" class="swiper-lazy">
+              <!-- Preloader image -->
+              <div class="swiper-lazy-preloader"></div>
+            </div>
+          <% else %>
+            <div class="swiper-slide frame_index_<%= index %>" style="background-image:url(<%= frame.image.thumb_lg %>)"></div>
+          <% end %>
+
     <% end %>
 
   </div>

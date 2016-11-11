@@ -1,7 +1,7 @@
 module C80Swiper
   module AppHelper
 
-    def swipe(swslider_id=nil)
+    def swipe(swslider_id=nil, effect='slide')
 
       swslider = swslider_id.nil? ?
           C80Swiper::Swslider.first :
@@ -13,7 +13,11 @@ module C80Swiper
                  options: {
                      mark_pagination: true,
                      mark_buttons: true,
-                     mark_scrollbar: false
+                     mark_scrollbar: false,
+                     mark_lazy: false,
+                     params: {
+                         effect: effect
+                     }
                  }
              }
     rescue => e

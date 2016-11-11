@@ -3,23 +3,12 @@ var create_swiper = function (options) {
     console.log('<create_swiper>');
 
     var swiper_options = {
-        // Optional parameters
-        //direction: 'vertical',
-        loop: true//,
-
-        // If we need pagination
-        //pagination: '.swiper-pagination',
-
-        // Navigation arrows
-        //nextButton: '.swiper-button-next',
-        //prevButton: '.swiper-button-prev',
-
-        // And if we need scrollbar
-        //scrollbar: '.swiper-scrollbar'
+        loop: true
     };
 
     if (options['mark_pagination']) {
         swiper_options['pagination'] = '.swiper-pagination';
+        swiper_options['paginationClickable'] = true;
     }
 
     if (options['mark_buttons']) {
@@ -29,6 +18,17 @@ var create_swiper = function (options) {
 
     if (options['mark_scrollbar']) {
         swiper_options['scrollbar'] = '.swiper-scrollbar';
+    }
+
+    if (options['mark_lazy']) {
+        swiper_options['lazyLoading'] = true;
+        swiper_options['preloadImages'] = false;
+    }
+
+    if (options['params'] != undefined) {
+
+        $.extend(swiper_options, options['params']);
+
     }
 
     return new Swiper('.swiper-container', swiper_options)
