@@ -10,14 +10,14 @@
           <!--Slide #<%= index %>-->
 
           <% if options[:mark_lazy].present? %>
-            <div class="swiper-slide frame_index_<%= index %>">
+            <div class="swiper-slide frame_index_<%= index %>" data-link-url='<%= frame.link_url %>'>
               <!-- Required swiper-lazy class and image source specified in data-src attribute -->
               <img data-src="<%= frame.image.thumb_lg %>" class="swiper-lazy">
               <!-- Preloader image -->
               <div class="swiper-lazy-preloader"></div>
             </div>
           <% else %>
-            <div class="swiper-slide frame_index_<%= index %>" style="background-image:url(<%= frame.image.thumb_lg %>)">
+            <div class="swiper-slide frame_index_<%= index %>" data-link-url='<%= frame.link_url %>' style="background-image:url(<%= frame.image.thumb_lg %>)">
 
               <h3><%= frame.title %></h3>
               <% frame.fcaptions.each_with_index do |fcaption, index2| %>
@@ -53,4 +53,5 @@
 
 <script>
   create_swiper(<%= options.to_json.html_safe %>);
+  handle_swiper_frames_clicks();
 </script>
