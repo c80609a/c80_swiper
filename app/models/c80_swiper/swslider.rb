@@ -8,6 +8,15 @@ module C80Swiper
                                   },
                                   :allow_destroy => true
 
+    # Если оно не равно `0`, значит подразумевается автопроигрывание с заданным интервалом
+    # Валидировать это значение: оно должно присутствовать и быть в диапазоне от `0` до `100`.
+    validates :autoplay,
+              :presence => true,
+              :numericality => {
+                  :greater_than_or_equal_to => 0,
+                  :less_than_or_equal_to => 100
+              }
+
     # has_and_belongs_to_many :swprops
     # выдать список тех Примеров, которые должны выводиться в виджете
     # def self.all_widgeted

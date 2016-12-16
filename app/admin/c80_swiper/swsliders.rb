@@ -7,6 +7,7 @@ ActiveAdmin.register C80Swiper::Swslider, as: 'Swslider' do
        parent: 'Swipers' # TODO_MY:: название пункта меню перенесести в параметры в базу
 
   permit_params :title,
+                :autoplay,
                 :sframes_attributes => [
                     :id,
                     :_destroy,
@@ -34,6 +35,7 @@ ActiveAdmin.register C80Swiper::Swslider, as: 'Swslider' do
   index do
     selectable_column
     column :title
+    column :autoplay
     column :sframes do |csample|
       s = ''
       # link_to image_tag(csample.csphoto.thumb_md, style: 'width:150px;'), csample.csphoto.url, target: '_blank'
@@ -51,6 +53,7 @@ ActiveAdmin.register C80Swiper::Swslider, as: 'Swslider' do
     f.inputs 'Свойства' do
 
       f.input :title
+      f.input :autoplay, hint: 'Время в секундах на показ фрейма. Если 0 - autoplay отключен.'
 
       f.inputs 'Фреймы' do
         f.has_many :sframes, allow_destroy: true do |ff|

@@ -16,7 +16,8 @@ module C80Swiper
                      mark_scrollbar: false,
                      mark_lazy: false,
                      params: {
-                         effect: effect
+                         effect: effect,
+                         autoplay: swslider.autoplay * 1000 # Delay between transitions (in ms). If this parameter is not specified, auto play will be disabled
                      }
                  }
              }
